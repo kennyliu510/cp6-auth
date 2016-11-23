@@ -1,29 +1,110 @@
-div.form-container{
-  display: inline-block;
-  border: 4px ridge blue;
-  width: 280px;
-  border-radius:10px;
-  margin:10px;
+@font-face {
+  font-family: squaredDisplay;
+  src: url(../assets/SquaredDisplay.woff),
+  url(../assets/SquaredDisplay.woff2);
 }
-p.form-header{
-  margin:0px;
-  font: 24px bold;
-  color:white;  background:blue;
+
+
+a {
+  text-decoration: none;
+  color: #2AB3A6;
+}
+
+body {
+  margin: 0;
+  text-align: center;
+  background: #F6F7F8;
+}
+
+form{
+  margin: auto;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  position: relative;
+  top: 40px;
+}
+
+label{
+  width:80px;
+  display: inline-block;
+}
+
+.header {
+  height: 150px;
+  background: #011627;
+  text-align: center;
+  color: ##2AB3A6;;
+  letter-spacing: 0.7em;
+  font-family: squaredDisplay;
+  font-size: 30px;
+}
+
+.form-container {
+  display: inline-block;
+  border: 1px solid #011627;
+  border-radius: 3px;
+  margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+.form-header{
+  margin: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #011627;
   text-align:center;
 }
-form{
-  margin:10px;
+
+.bold {
+  font-weight: bold;
 }
-label{ width:80px; display: inline-block;}
-input{
-  border: 3px ridge blue;
-  border-radius:5px;
-  padding:3px;
+
+.cabin {
+  font-family: 'Cabin';
 }
-input[type=submit]{
-  font: 18px bold;
+
+.abel {
+  font-family: 'Abel';
+}
+
+.form-input {
+  border: 1px solid #82735C;
+  color: #011627;
+  font-size: 20px;
+  border-radius: 2px;
+  padding:6px;
+  margin: 10px 40px;
+  background-color: #F6F7F8;
+  width: 300px;
+}
+
+.form-input:focus {
+  border-color: #2AB3A6;
+  outline-width: 0px;
+}
+
+.form-submit {
+  margin: 30px;
+}
+
+.submit {
+  font-size: 20px;
+  font-weight: bold;
   width: 120px;
-  color:white;  background:blue;
-  margin-top:15px;
-  margin-left:85px;
+  color: white;
+  background: #2AB3A6;
+  padding: 6px;
+  border: solid;
+  border-radius: 3px;
+}
+
+.submit:hover {
+  background-color: #2EC4B6;
+}
+
+.submit:focus {
+  outline-width: 0px;
 }

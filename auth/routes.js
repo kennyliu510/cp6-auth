@@ -70,7 +70,7 @@ module.exports = function(app) {
   });
 
   app.post('/offer', function(req, res) {
-
+    res.send({success: "ok"});
   });
 
   app.delete('/offer', function(req, res) {

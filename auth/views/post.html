@@ -1,9 +1,16 @@
 <!DOCTYPE html>
-<html ng-app="">
+<html ng-app="project">
   <head>
     <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+    <script src="/static/js/post.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
   </head>
-  <body>
+  <body ng-controller="postCtrl">
+    <div class="header">
+      <h1>ColLab</h1>
+    </div>
     <h1><%= title %></h1>
     <h3><%= author %></h3>
     <div><%= content %></div>
@@ -11,6 +18,7 @@
       var offer = offers[offerID]%>
       <div id="<%=offerID%>"><%=offer.user%><%=offer.type%></div>
     <%}%>
+    <div ng-repeat="offer in offers" id="{{offer.id}}">{{offer.user}}{{offer.type}}</div>
     <button ng-click="showEdit = !showEdit">Offer Help</button>
     <div ng-class="{ 'hidden': showEdit }" id="edit-offer">
       <select id="type-select" ng-model="offerType">
@@ -20,8 +28,8 @@
         <option value="transportation">Transportation</option>
         <option value="space">Space</option>
       </select>
-      <input type="text" ng-model="offerDesc">
-      <button onClick="submitOffer()">Submit</button>
+      <input type="text" ng-model="description">
+      <button ng-click="submitOffer()">Submit</button>
     </div>
   </body>
 </html>

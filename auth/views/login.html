@@ -2,21 +2,22 @@
 <html>
 <head>
   <title>User Login and Sessions</title>
-  <link rel="stylesheet" type="text/css" 
-        href="/static/css/styles.css" />
+  <link rel="stylesheet" type="text/css" href="/static/css/styles.css" />
+  <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
 </head>
 <body>
-  <div class="form-container">
-    <p class="form-header">Login</p>
-    <form method="POST" action="/login">
-        <label>Username:</label>
-        <input type="text" name="username"><br>
-        <label>Password:</label>
-        <input type="password" name="password"><br>
-        <input type="submit" value="Login">
-    </form>
+  <div class="header">
+    <h1>ColLab</h1>
   </div>
-  <a href="/signup">Sign Up</a>
-  <hr><%= msg %>
+  <div class="form-container">
+    <p class="form-header abel">Sing In To Continue as a User</p>
+    <form method="POST" action="/login">
+        <input type="text" class="form-input cabin" name="username" placeholder="Username" autocomplete="off"><br>
+        <input type="password" class="form-input cabin" name="password" placeholder="Password" autocomplete="off"><br>
+        <input type="submit" class="submit form-submit abel" value="Sign In">
+    </form>
+  </div><br>
+  <span class="cabin">or <a href="/signup">create an account</a></span>
 </body>
 </html>

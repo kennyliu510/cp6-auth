@@ -2,10 +2,14 @@
 <html ng-app="projectBuilder">
   <head>
     <title>Create a New Project</title>
-    <link rel="stylesheet" type="text/css"
-        href="/static/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
   </head>
   <body ng-controller="projBuildCtrl">
+    <div class="header">
+      <h1>ColLab</h1>
+    </div>
     <label>Title: <input type="text" ng-model="title"></label><br>
     <label>Description: <textarea ng-model="description"></textarea></label><br>
     <input type="button" value="Submit" ng-click="submitProject()">
