@@ -62,7 +62,7 @@ module.exports = function(app) {
   app.post('/project', function(req, res) {
     if (req.session.user) {
       var project = {
-        author: req.session.username,
+        author: req.session.user,
         title: req.body.title,
         content: req.body.description,
         offers: []
@@ -73,7 +73,15 @@ module.exports = function(app) {
   });
 
   app.post('/offer', function(req, res) {
-    res.send({success: "ok"});
+    if (req.session.user) {
+      var offer = {
+        user: req.session.user,
+        type: req.body.type,
+        content: req.body.content
+      };
+      var offerID = offers.addOffer(offer);
+      res.send({offerID: offerID});
+    }
   });
 
   app.delete('/offer', function(req, res) {
