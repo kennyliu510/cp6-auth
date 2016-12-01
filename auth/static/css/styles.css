@@ -12,7 +12,6 @@ a {
 
 body {
   margin: 0;
-  text-align: center;
   background: #F6F7F8;
 }
 
@@ -22,9 +21,13 @@ form{
 }
 
 h1 {
+  font-size: 50px;
   margin: 0;
   position: relative;
   top: 40px;
+  letter-spacing: 0.7em;
+  font-family: squaredDisplay;
+  text-align: center;
 }
 
 label{
@@ -32,30 +35,13 @@ label{
   display: inline-block;
 }
 
-.header {
-  height: 150px;
-  background: #011627;
-  text-align: center;
-  color: ##2AB3A6;;
-  letter-spacing: 0.7em;
-  font-family: squaredDisplay;
-  font-size: 30px;
+.abel {
+  font-family: 'Abel';
 }
 
-.form-container {
-  display: inline-block;
-  border: 1px solid #011627;
-  border-radius: 3px;
-  margin-top: 80px;
-  margin-bottom: 20px;
-}
-
-.form-header{
-  margin: 30px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #011627;
-  text-align:center;
+.auth-message {
+  color: #D92E44;
+  margin-top: 10px;
 }
 
 .bold {
@@ -66,16 +52,48 @@ label{
   font-family: 'Cabin';
 }
 
-.abel {
-  font-family: 'Abel';
+.header {
+  height: 150px;
+  background: #011627;
+  color: #2AB3A6;
+}
+
+.fa-check {
+  color: #169C25;
+}
+
+.fa-times {
+  color: #D92E44;
+}
+
+.form-center {
+  text-align: center;
+  background: #F6F7F8;
+}
+
+.form-container {
+  display: inline-block;
+  border: 1px solid #011627;
+  border-radius: 3px;
+  margin-top: 70px;
+  margin-bottom: 20px;
+}
+
+.form-header{
+  margin: 30px 0px 0px 0px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #011627;
+  text-align:center;
 }
 
 .form-input {
-  border: 1px solid #82735C;
+  border: 1px solid #011627;
+  font-weight: normal;
   color: #011627;
-  font-size: 20px;
+  font-size: 16px;
   border-radius: 2px;
-  padding:6px;
+  padding:8px;
   margin: 10px 40px;
   background-color: #F6F7F8;
   width: 300px;
@@ -86,14 +104,28 @@ label{
   outline-width: 0px;
 }
 
+.form-input-container {
+  position: relative;
+}
+
 .form-submit {
-  margin: 30px;
+  margin: 20px 0 30px 0;
+}
+
+.form-validation-icon {
+  position: absolute;
+  right: 55px;
+  top: 20px;
+}
+
+.invalid {
+  border-color: #D92E44;
 }
 
 .submit {
   font-size: 20px;
   font-weight: bold;
-  width: 120px;
+  width: 150px;
   color: white;
   background: #2AB3A6;
   padding: 6px;
@@ -107,4 +139,8 @@ label{
 
 .submit:focus {
   outline-width: 0px;
+}
+
+.top-nav {
+  float: right;
 }

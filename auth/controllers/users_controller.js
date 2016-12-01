@@ -6,43 +6,48 @@ function hashPW(pwd){
          digest('base64').toString();
 }
 exports.signup = function(req, res){
-  var user = new User({username:req.body.username});
-  user.set('hashed_password', hashPW(req.body.password));
-  user.set('email', req.body.email);
-  user.save(function(err) {
-    console.log(err);
-    if (err){
-      res.session.error = err;
-      res.redirect('/signup');
-    } else {
-      req.session.user = user.id;
-      req.session.username = user.username;
-      req.session.msg = 'Authenticated as ' + user.username;
-      res.redirect('/');
-    }
-  });
+  if (req.body.username && req.body.password) {
+    var user = new User({username:req.body.username});
+    user.set('hashed_password', hashPW(req.body.password));
+    user.save(function(err) {
+      console.log(err);
+      if (err){
+        if (err.message.indexOf("duplicate key") !== -1) {
+          res.send({success: false, message: "username unavailable"});
+        }
+      } else {
+        req.session.user = user.id;
+        req.session.username = user.username;
+        req.session.msg = 'Authenticated as ' + user.username;
+        res.redirect('/');
+      }
+    });
+  } else {
+    res.send({error: "missing data"});
+  }
 };
 exports.login = function(req, res){
   User.findOne({ username: req.body.username })
   .exec(function(err, user) {
     if (!user){
-      err = 'User Not Found.';
+      var message = 'Username or password is incorrect';
     } else if (user.hashed_password ===
                hashPW(req.body.password.toString())) {
       req.session.regenerate(function(){
         req.session.user = user.id;
         req.session.username = user.username;
-        req.session.msg = 'Authenticated as ' + user.username;
-        req.session.color = user.color;
-        res.redirect('/');
+        res.send({success: true});
       });
     }else{
-      err = 'Authentication failed.';
+      var message = 'Username or password is incorrect';
     }
-    if(err){
+    if(message){
       req.session.regenerate(function(){
-        req.session.msg = err;
-        res.redirect('/login');
+        res.send({success: false, message: message});
+      });
+    } else if (err) {
+      req.session.regenerate(function(){
+        res.send({error: true});
       });
     }
   });
@@ -60,7 +65,6 @@ exports.getUserProfile = function(req, res) {
 exports.updateUser = function(req, res){
   User.findOne({ _id: req.session.user })
   .exec(function(err, user) {
-    user.set('email', req.body.email);
     user.set('color', req.body.color);
     user.save(function(err) {
       if (err){
@@ -93,3 +97,12 @@ exports.deleteUser = function(req, res){
     }
   });
 };
+exports.userExists = function(req, res) {
+  User.findOne({username: req.query.username})
+  .exec(function(err, user) {
+    var exists = false;
+    if (user) exists = true;
+    res.send({exists: exists});
+  })
+
+}

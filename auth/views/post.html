@@ -2,22 +2,31 @@
 <html ng-app="project">
   <head>
     <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
-    <script src="/static/js/post.js"></script>
+    <script src="/static/js/post.js">Collab</script>
     <link rel="stylesheet" type="text/css" href="/static/css/styles.css" />
     <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
   </head>
   <body ng-controller="postCtrl">
     <div class="header">
-      <h1>ColLab</h1>
+      <div class="top-nav">
+          <% if (signedIn) { %>
+            <a class="top-nav-link abel" href="/create">Create a Project</a>
+            <a class="top-nav-link abel" href="/logout">Logout</a>
+          <% } else { %>
+            <a class="top-nav-link abel" href="/signup">Sign Up</a>
+            <a class="top-nav-link abel" href="/login">Log in</a>
+          <% } %>
+      </div>
+      <h1><a href="/">ColLab</a></h1>
     </div>
     <h1><%= title %></h1>
     <h3><%= author %></h3>
     <div><%= content %></div>
-    <%for (var offerID in offers) {
-      var offer = offers[offerID]%>
-      <div id="<%=offerID%>"><%=offer.user%><%=offer.type%></div>
-    <%}%>
+      <%for (var offerID in offers) {
+        var offer = offers[offerID]%>
+        <div id="<%=offerID%>"><%=offer.user%><%=offer.type%></div>
+      <%}%>
     <div ng-repeat="offer in offers" id="{{offer.id}}">{{offer.user}}{{offer.type}}</div>
     <button ng-click="showEdit = !showEdit">Offer Help</button>
     <div ng-class="{ 'hidden': showEdit }" id="edit-offer">

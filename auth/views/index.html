@@ -1,27 +1,38 @@
 <!doctype html>
 <html ng-app="myApp">
   <head>
-    <title>User Login and Sessions</title>
+    <title>Collab</title>
     <link rel="stylesheet" type="text/css" href="/static/css/styles.css" />
     <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
     <link rel="stylesheet" type="text/css"
         href="/static/css/styles.css" />
-        <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
-        <script src="/static/js/index.js"></script>
+    <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+    <script src="/static/js/index.js"></script>
   </head>
   <body ng-controller="myController">
     <div class="header">
-      <h1>ColLab</h1>
+      <div class="top-nav">
+          <% if (signedIn) { %>
+            <a class="top-nav-link abel" href="/create">Create a Project</a>
+            <a class="top-nav-link abel" href="/logout">Logout</a>
+          <% } else { %>
+            <a class="top-nav-link abel" href="/signup">Sign Up</a>
+            <a class="top-nav-link abel" href="/login">Log in</a>
+          <% } %>
+      </div>
+      <h1><a href="/">ColLab</a></h1>
     </div>
-    <div id="posts">
+    <div id="posts" class="cabin">
       <div ng-repeat="post in posts">
         <a href="/project/{{post.id}}">{{post.title}}</a>
         <span> {{post.author}}</span>
         <span> {{post.numOffers}}</span>
       </div>
     </div>
-    <a href="/create">Start a New Project</a>
-    <a href="/logout">Logout</a>
+    <% if (signedIn) { %>
+      <a href="/create">Start a New Project</a>
+      <a href="/logout">Logout</a>
+    <% } %>
   </body>
 </html>

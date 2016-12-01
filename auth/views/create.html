@@ -1,14 +1,23 @@
 <!doctype html>
 <html ng-app="projectBuilder">
   <head>
-    <title>Create a New Project</title>
+    <title>Collab</title>
     <link rel="stylesheet" type="text/css" href="/static/css/styles.css" />
     <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
   </head>
   <body ng-controller="projBuildCtrl">
     <div class="header">
-      <h1>ColLab</h1>
+      <div class="top-nav">
+          <% if (signedIn) { %>
+            <a class="top-nav-link abel" href="/create">Create a Project</a>
+            <a class="top-nav-link abel" href="/logout">Logout</a>
+          <% } else { %>
+            <a class="top-nav-link abel" href="/signup">Sign Up</a>
+            <a class="top-nav-link abel" href="/login">Log in</a>
+          <% } %>
+      </div>
+      <h1><a href="/">ColLab</a></h1>
     </div>
     <label>Title: <input type="text" ng-model="title"></label><br>
     <label>Description: <textarea ng-model="description"></textarea></label><br>

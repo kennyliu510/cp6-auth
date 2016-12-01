@@ -9,13 +9,11 @@ module.exports = function(app) {
       use('/lib', express.static( '../lib')
   );
   app.get('/', function(req, res){
-    if (req.session.user) {
-      res.render('index', {username: req.session.username,
-                           msg:req.session.msg});
-    } else {
-      req.session.msg = 'Access denied!';
-      res.redirect('/login');
-    }
+      var signedIn = false;
+      if (req.session.user) {
+        signedIn = true
+      };
+      res.render('index', {signedIn: signedIn});
   });
   app.get('/user', function(req, res){
     if (req.session.user) {
@@ -40,7 +38,7 @@ module.exports = function(app) {
 
   app.get('/logout', function(req, res){
     req.session.destroy(function(){
-      res.redirect('/login');
+      res.redirect('/');
     });
   });
 
@@ -53,7 +51,11 @@ module.exports = function(app) {
   });
 
   app.get('/create', function(req, res) {
-    res.render('create');
+    if (res.session.user) {
+      res.render('create');
+    } else {
+      res.redirect('/');
+    }
   })
 
   app.post('/project', function(req, res) {
@@ -81,8 +83,10 @@ module.exports = function(app) {
 
   })
 
+
   app.post('/signup', users.signup);
   app.post('/user/delete', users.deleteUser);
   app.post('/login', users.login);
   app.get('/user/profile', users.getUserProfile);
+  app.get('/user-exists', users.userExists);
 }
