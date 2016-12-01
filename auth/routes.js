@@ -11,6 +11,7 @@ module.exports = function(app) {
   app.get('/', function(req, res){
       var signedIn = false;
       if (req.session.user) {
+        console.log(req.session.user);
         signedIn = true
       };
       res.render('index', {signedIn: signedIn});
