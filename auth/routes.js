@@ -52,7 +52,7 @@ module.exports = function(app) {
   });
 
   app.get('/create', function(req, res) {
-    if (res.session.user) {
+    if (req.session.user) {
       res.render('create');
     } else {
       res.redirect('/');
@@ -85,7 +85,7 @@ module.exports = function(app) {
   });
 
   app.delete('/offer', function(req, res) {
-
+     
   });
 
   app.delete('/post', function(req, res) {
