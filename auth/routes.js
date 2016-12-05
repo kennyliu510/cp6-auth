@@ -62,7 +62,7 @@ module.exports = function(app) {
   app.post('/project', function(req, res) {
     if (req.session.user) {
       var project = {
-        author: req.session.user,
+        author: req.session.username,
         title: req.body.title,
         content: req.body.description,
         offers: []
