@@ -14,8 +14,8 @@ controller('postCtrl', ['$scope', '$http',
           type: $scope.offerType,
           description: $scope.description
         });
-        $scope.offerType = "";
-        $scope.description = "";
+       // $scope.offerType = "";
+       // $scope.description = "";
       });
     }
   }]);

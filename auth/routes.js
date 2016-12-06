@@ -72,25 +72,29 @@ module.exports = function(app) {
     }
   });
 
+  var offer = "";
+
   app.post('/offer', function(req, res) {
     if (req.session.user) {
-      var offer = {
-        user: req.session.username,
-        type: req.body.type,
-        description: req.body.description
-      };
-      var offerID = offers.addOffer(offer);
-      res.send({offerID: offerID});
+        var offerID = {
+             user: req.session.username,
+             type: req.body.type,
+             description: req.body.description
+        };
+        res.send({offerID: offerID});
     }
   });
+
+
+
 
   app.delete('/offer', function(req, res) {
      
   });
 
   app.delete('/post', function(req, res) {
-
-  })
+	
+  });
 
 
   app.post('/signup', users.signup);
