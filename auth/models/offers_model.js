@@ -3,6 +3,6 @@ var mongoose = require('mongoose'),
 var OfferSchema = new Schema({
     user: String,
     type: String,
-    content: String
+    description: String
 });
 mongoose.model('Offer', OfferSchema);

@@ -2,37 +2,37 @@ var offers = {
   "0000": {
     user: "todd",
     type: "money",
-    desc: "4000 dollars"
+    description: "4000 dollars"
   },
   "0020": {
     user: "todd",
     type: "material",
-    desc: "wood"
+    description: "wood"
   },
   "0021": {
     user: "bill",
     type: "skill",
-    desc: "science"
+    description: "science"
   },
   "0022": {
     user: "a",
     type: "space",
-    desc: "Workshop"
+    description: "Workshop"
   },
   "0100": {
     user: "a",
     type: "material",
-    desc: "wire"
+    description: "wire"
   },
   "0006": {
     user: "1",
     type: "money",
-    desc: "10 cents"
+    description: "10 cents"
   },
   "0888": {
     user: "1",
     type: "skill",
-    desc: "Carpentry"
+    description: "Carpentry"
   },
 }
 
@@ -54,3 +54,5 @@ exports.getOffersByIDs = function(ids) {
   }
   return offers;
 }
+
+
